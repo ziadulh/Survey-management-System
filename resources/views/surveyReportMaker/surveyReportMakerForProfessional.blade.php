@@ -6,10 +6,23 @@
 
     <form action="/professionwise/surveyReport" method="get">
         <div class="box-body">
-            <h3>Choose a profession type to show specific survey data according to profession: </h3>
+            <h3>Select Survey & Profession to get more specific Data </h3>
             <div class="input-group input-group-sm">
 
-                <select class="form-control" name="profession">
+                <select class="form-control" name="survey" style="width:50%">
+                    <option value="0">All</option>
+                        @foreach ($survey as $key => $syrvey)
+                            @if ($syrvey->id==$survey_id)
+                                <option selected value="{{$syrvey->id}}">{{$syrvey->name}}</option>
+
+                            @else
+                                <option value="{{$syrvey->id}}">{{$syrvey->name}}</option>
+
+                            @endif
+                        @endforeach
+                </select>
+
+                <select class="form-control" name="profession" style="width:50%;">
                     <option value="0">All</option>
                         @foreach ($profession as $key => $profession)
                             @if ($profession->id==$profession_id)
@@ -34,11 +47,12 @@
         <table class="table table-bordered">
             <tbody>
               <tr>
+                <th >Survey ID</th>
                 <th >Question</th>
                 <th>Option Name</th>
 
                     @if ($profession_id)
-                        <td>{{$type->profession}} responses</td>
+                        <th>{{$type->profession}} responses</th>
 
                     @endif
 
@@ -59,6 +73,7 @@
 
               <tr>
                 @if(count($a->Occurence))
+                    <td>{{$a->ansID->survey_auto_id}}</td>
                     <td>{{$a->que->name}}</td>
                     <td>{{$a->ansID->options}}</td>
                     @if ($profession_id)

@@ -15,10 +15,17 @@ class surveyReportMaker extends Controller
 {
 
     // Report of survey, optionwise
-    public function report(){
+    public function report(Request $request){
         // dd(Que_option::pluck('id'));
+        $survey = nsurvey::get();
+        $survey_id = $request->get('survey');
 
-        $optionID = Que_option::get();
+        $optionID = Que_option::where('survey_auto_id',$survey_id)->get();
+        if($survey_id == 0){
+            $optionID = Que_option::get();
+        }
+
+
         $optionArray = [];
 
         foreach($optionID as $optionID){
@@ -31,18 +38,27 @@ class surveyReportMaker extends Controller
             array_push($optionArray,$o);
         }
 
-        return view('surveyReportMaker.surveyReportMaker',compact('optionArray'));
+        return view('surveyReportMaker.surveyReportMaker',compact(['optionArray','survey_id','survey']));
     }
 
 
     // Report of  survey, Professionwise
     public function surveyReportMakerForProfessional(Request $request){
 
+        $survey = nsurvey::get();
+        $survey_id = $request->get('survey');
         $profession_id = $request->get('profession');
         $type = surveyPerformerProfession::find($profession_id);
 
         $profession = surveyPerformerProfession::get();
-        $optionID = Que_option::get();
+
+
+        $optionID = Que_option::where('survey_auto_id',$survey_id)->get();
+        if($survey_id == 0){
+            $optionID = Que_option::get();
+        }
+
+
         $optionArray = [];
 
         foreach($optionID as $optionID){
@@ -56,12 +72,7 @@ class surveyReportMaker extends Controller
             array_push($optionArray,$o);
         }
 
-        return view('surveyReportMaker.surveyReportMakerForProfessional',compact(['optionArray','profession','profession_id','type']));
-
-
-
-
-
+        return view('surveyReportMaker.surveyReportMakerForProfessional',compact(['optionArray','profession','profession_id','type','survey','survey_id']));
 
         // $profession = SurveyPerformerProfession::get();
         // $optionID = Que_option::get();
@@ -72,6 +83,10 @@ class surveyReportMaker extends Controller
         //     print_r(count($d)); echo "\n";
         // } exit();
         // return view('surveyReportMaker.surveyReportMakerForProfessional',compact(['profession']));
+    }
+
+    public function questionWiseReport(){
+
     }
 }
 
