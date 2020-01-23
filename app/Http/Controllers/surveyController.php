@@ -8,29 +8,33 @@ use App\nsurvey;
 use App\Survey_question;
 use App\Que_option;
 
-class pagesController extends Controller
+class surveyController extends Controller
 {
-
-
+    // form to create a new survey
     public function survey(){
-        return view('pages.survey');
+        return view('surveyCRUD.survey');
     }
 
 
+    // function to store a new survey
     public function store(Request $request)
     {
 
         $request->validate([
             "sname" => 'required',
             "edate" => 'required',
-            "pdate" => 'required',
 
         ]);
+
+        $publishdate = date("Y-m-d");
+        $user_id = auth()->user()->id;
 
         $data = array(
             "name" => $request->input('sname'),
             "edate" => $request->input('edate'),
-            "pdate" => $request->input('pdate'),
+            "pdate" => $publishdate,
+            "created_by" => $user_id,
+            "publish" => $request->input('publish'),
         );
         Nsurvey::create($data);
     	// $data = new nsurvey;
@@ -42,33 +46,39 @@ class pagesController extends Controller
     	return redirect('/surveyList')->with('success','Survey created');
     }
 
+
+    // to show the list of all surveys
     public function list()  //used
     {
         $data = nsurvey::all();
-        return view('pages.surveyList')->with('data',$data);
+        return view('surveyCRUD.surveyList')->with('data',$data);
     }
 
 
 
+    // to edit a desire survey
     public function edit($id)  // used
     {
         $data = nsurvey::find($id);
-        return view('pages.edit')->with('data', $data);
+        return view('surveyCRUD.edit')->with('data', $data);
     }
 
+
+    // to store updated information of a survey
     public function update(Request $request, $id)
     {
         $request->validate([
             "sname" => 'required',
             "edate" => 'required',
-            "pdate" => 'required',
 
         ]);
+        $user_id = auth()->user()->id;
 
         $data = nsurvey::find($id);
         $data->name = $request->input('sname');
         $data->edate = $request->input('edate');
-        $data->pdate = $request->input('pdate');
+        $data->updated_by = $user_id;
+        $data->publish = $request->input('publish');
         $data->save();
 
         return redirect('/surveyList')->with('success','Your survey information is updated');
@@ -97,7 +107,7 @@ class pagesController extends Controller
              $dd->delete();
         }
 
-        return redirect('/surveyList')->with('success', 'Selected survey is deleted');
+        return redirect('/surveyList')->with('success', 'Survey is deleted');
     }
 
 }

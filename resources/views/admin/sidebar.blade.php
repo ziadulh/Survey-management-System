@@ -28,12 +28,11 @@
                 <a href="#">
                     <i class="fa fa-circle-o"></i> <span>Survey</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
+
                 <ul class="treeview-menu">
-
-
                     {{--land class--}}
                     <li class="treeview">
                         <a href="#"><i class="fa fa-circle-o"></i> Syrvey Class
@@ -44,87 +43,81 @@
                         <ul class="treeview-menu">
                             <li><a href="/createSurvey"><i class="fa fa-circle-o"></i>Create Survey</a></li>
                             <li><a href="/surveyList"><i class="fa fa-circle-o"></i> Survey List</a></li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i>Questionaire Class
+                            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                        </a>
+                        <ul class="treeview-menu">
                             <li><a href="/survey/questionaire"><i class="fa fa-circle-o"></i>Create Survey Question </a></li>
-                        </ul>
-                    </li>
-
-
-
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-circle-o"></i>Questionaire
-                            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                        </a>
-                        <ul class="treeview-menu">
                             <li><a href="/allSurveyQuestionList"><i class="fa fa-circle-o"></i>All Survey Questionaire</a></li>
-                            <li><a href="/register"><i class="fa fa-circle-o"></i> Register</a></li>
 
                         </ul>
                     </li>
 
 
                     <li class="treeview">
-                        {{-- <a href="#"><i class="fa fa-circle-o"></i> Texture --}}
+                        <a href="#"><i class="fa fa-circle-o"></i> Profession Class
                             <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            {{-- <li><a href="{{route('texture.create')}}"><i class="fa fa-circle-o"></i> Add Texture</a></li> --}}
-                            {{-- <li><a href="{{route('texture.index')}}"><i class="fa fa-circle-o"></i> Texture List</a></li> --}}
+                            <li><a href="/surveyProfessionCreatorForm"><i class="fa fa-circle-o"></i>Create Profession</a></li>
+                            <li><a href="/surveyProfessionList"><i class="fa fa-circle-o"></i>Survey Profession List</a></li>
 
                         </ul>
                     </li>
-
-
-
-                    <li class="treeview">
-                        {{-- <a href="#"><i class="fa fa-circle-o"></i> Cultivation Type --}}
-                            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            {{-- <li><a href="{{route('cultivationType.create')}}"><i class="fa fa-circle-o"></i>Add Cultivation Type</a></li> --}}
-                            {{-- <li><a href="{{route('cultivationType.index')}}"><i class="fa fa-circle-o"></i>Cultivation Type List</a></li> --}}
-
-                        </ul>
-                    </li>
-
-                    <li class="treeview">
-                        {{-- <a href="#"><i class="fa fa-circle-o"></i>  State --}}
-                            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            {{-- <li><a href="{{route('state.create')}}"><i class="fa fa-circle-o"></i>Add State</a></li> --}}
-                            {{-- <li><a href="{{route('state.index')}}"><i class="fa fa-circle-o"></i>State List</a></li> --}}
-
-                        </ul>
-                    </li>
-
-                </ul>
-
-                <li class="treeview">
-                    {{-- <a href="#"><i class="fa fa-circle-o"></i> Soil Nutrition --}}
-                        <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        {{-- <li><a href="{{route('soilNutrition.create')}}"><i class="fa fa-circle-o"></i> Add Soil Nutrition</a></li> --}}
-                        {{-- <li><a href="{{route('soilNutrition.index')}}"><i class="fa fa-circle-o"></i> Soil Nutrition List </a></li> --}}
-                    </ul>
-                </li>
-
-
-
-
             </li>
 
         </ul>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-circle-o"></i> <span>Admin</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+
+                <ul class="treeview-menu">
+                    {{--land class--}}
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i> Registration Class
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+
+                        <ul class="treeview-menu">
+                            <li><a href="/register"><i class="fa fa-circle-o"></i> Register</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i> Report Class
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+
+                        <ul class="treeview-menu">
+                            <li><a href="/surveyReport"><i class="fa fa-circle-o"></i> General Report</a></li>
+                            <li><a href="/professionwise/surveyReport"><i class="fa fa-circle-o"></i> Professionwise Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
     </section>
     <!-- /.sidebar -->
 </aside>

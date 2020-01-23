@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class nsurvey extends Model
 {
-    protected $fillable = ['name','edate','pdate'];
+    protected $fillable = ['name','edate','pdate','created_by','publish'];
 }
