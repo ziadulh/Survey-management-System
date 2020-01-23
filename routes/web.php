@@ -17,14 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home'); //used
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/createSurvey','surveyController@survey')->middleware('auth'); //used
-Route::post('/store','surveyController@store')->middleware('auth'); //used
-Route::get('/surveyList','surveyController@list');  // used
-Route::get('/surveyList/{id}/edit','surveyController@edit')->middleware('auth');  // used
-Route::post('/surveyList/{id}/update','surveyController@update')->middleware('auth'); // used
-Route::post('/surveyList/{id}/delete','surveyController@destroy')->middleware('auth'); // used
+Route::get('/createSurvey','surveyController@survey')->middleware('auth');
+Route::post('/store','surveyController@store')->middleware('auth');
+Route::get('/surveyList','surveyController@list');
+Route::get('/surveyList/{id}/edit','surveyController@edit')->middleware('auth');
+Route::post('/surveyList/{id}/update','surveyController@update')->middleware('auth');
+Route::post('/surveyList/{id}/delete','surveyController@destroy')->middleware('auth');
 
 
 Route::get('/survey/questionaire','surveyQuestionOptionCurdController@surveyQuestionOptionCreateForm')->middleware('auth');
