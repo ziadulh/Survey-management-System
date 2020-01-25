@@ -201,6 +201,12 @@ class surveyQuestionOptionCurdController extends Controller
     // function to store updated data
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            "name" => 'required',
+        ]);
+
+
         $user_id = auth()->user()->id;
 
         $data1 = Survey_question::find($id);

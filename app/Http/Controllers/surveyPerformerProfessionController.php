@@ -50,6 +50,13 @@ class surveyPerformerProfessionController extends Controller
 
     public function updateProfession(Request $request, $id)
     {
+
+        $request->validate([
+            "profession" => 'required',
+
+        ]);
+
+
         $user_id = auth()->user()->id;
 
         $data = surveyPerformerProfession::find($id);

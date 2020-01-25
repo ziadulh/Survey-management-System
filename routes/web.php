@@ -48,4 +48,5 @@ Route::post('/surveyProfessionList/{id}/delete','surveyPerformerProfessionContro
 
 Route::get('/surveyReport','surveyReportMaker@report')->middleware('auth');
 Route::get('/professionwise/surveyReport','surveyReportMaker@surveyReportMakerForProfessional')->middleware('auth');
+Route::get('/questionwise/report','surveyReportMaker@questionWiseReport');
 

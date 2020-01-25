@@ -4,7 +4,9 @@
 @extends('admin.master')
 
 
+
 @section('content')
+@include('Messages.message')
   <form role="form" action="/surveyProfessionList/{{$allDataFromSurveyProfessionTable->id}}/updated" method="post">
     @csrf
     <div class="box-body">

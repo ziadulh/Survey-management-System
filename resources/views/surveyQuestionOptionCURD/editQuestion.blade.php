@@ -25,6 +25,7 @@
         <button type="submit">update</button>
     </form>
 </div> --}}
+@include('Messages.message')
 
 <form role="form" action="/allSurveyQuestionListupdate/{{$data1[0]->id}}" method="post">
     @csrf

@@ -85,7 +85,30 @@ class surveyReportMaker extends Controller
         // return view('surveyReportMaker.surveyReportMakerForProfessional',compact(['profession']));
     }
 
+
+
+    // funtion take one question and found its corresponding options and options apearances as well
+
     public function questionWiseReport(){
+
+        $arr = [];
+        $surveyTableData = Survey_question::get();
+        foreach($surveyTableData as $std){
+            $op = Que_option::where('que_auto_id',$std->id)->get();
+            $o = new Object_();
+            $o->que = $std->name;
+            foreach($op as $key => $ops){
+                $o->opt[$key] = $ops->options;
+                $ocs = Survey_table::where('ans',$ops->id)->get();
+                $o->selection[$key] = count($ocs);
+
+
+            }
+            array_push($arr,$o);
+
+        }
+
+        return view('surveyReportMaker.questionWiseReport',compact(['surveyTableData','arr']));
 
     }
 }

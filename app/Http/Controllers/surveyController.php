@@ -22,7 +22,7 @@ class surveyController extends Controller
 
         $request->validate([
             "sname" => 'required',
-            "edate" => 'required',
+            "edate" => 'required|date',
 
         ]);
 
@@ -69,7 +69,7 @@ class surveyController extends Controller
     {
         $request->validate([
             "sname" => 'required',
-            "edate" => 'required',
+            "edate" => 'required|date',
 
         ]);
         $user_id = auth()->user()->id;
